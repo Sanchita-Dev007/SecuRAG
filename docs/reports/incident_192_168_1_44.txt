@@ -1,0 +1,26 @@
+
+================================================================================
+[AUTOMATED INCIDENT PLAYBOOK - SECU-RAG SOC TELEMETRY]
+Timestamp: 2026-11-02 15:09:40 UTC
+Threat Target: Edge Ingress Gateway
+================================================================================
+
+[1. TELEMETRY DETAILS]
+  - Malicious Source IP     : 192.168.1.44
+  - Flagged Threat Signature: Suspicious Host Deviation
+  - Anomaly Score           : -0.0273 (Isolation Forest Metric)
+  - Packet Arrival Rate     : 0.46 pkts/sec
+  - Unique Ports Scanned    : 5
+
+[2. RETRIEVED THREAT INTEL (MITRE ATT&CK)]
+  - Technique ID            : T1071 (Standard Application Layer Protocol Deviation)
+  - Tactic Category         : Command and Control
+  - Vector Description      : Anomalous communication bursts across non-standard application protocols indicating lateral movement or unauthorized internal scanning.
+  - Industry Best-Practice  : Quarantine the internal subnet, inspect active session state tables, and terminate persistent TCP connections.
+
+[3. AUTONOMOUS REMEDIATION ACTION]
+  - Enforced Policy         : QUARANTINE
+  - Executable Shell Command:
+      >>> sudo iptables -A INPUT -s 192.168.1.44 -j DROP
+  - Action Status           : READY_FOR_SOC_DEPLOYMENT
+================================================================================

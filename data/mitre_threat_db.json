@@ -1,0 +1,26 @@
+[
+  {
+    "technique_id": "T1046",
+    "technique_name": "Network Service Discovery (Port Scan)",
+    "tactics": "Discovery",
+    "description": "Adversaries attempt to enumerate accessible services and ports across remote network endpoints to map vulnerabilities before exploitation.",
+    "mitigation": "Drop scanning packets immediately, enforce rate-limiting on TCP SYN requests, and blacklist the offending source IP at the edge firewall.",
+    "default_action": "DROP_IP"
+  },
+  {
+    "technique_id": "T1498",
+    "technique_name": "Network Denial of Service (Volumetric Flood)",
+    "tactics": "Impact",
+    "description": "Adversaries direct high-volume traffic floods (SYN/UDP floods) towards internal hosts to degrade network availability and exhaust socket memory buffers.",
+    "mitigation": "Enable SYN cookies, activate edge scrubbing center redirect, and enforce per-IP packet rate limits at the router gateway.",
+    "default_action": "RATE_LIMIT_DROP"
+  },
+  {
+    "technique_id": "T1071",
+    "technique_name": "Standard Application Layer Protocol Deviation",
+    "tactics": "Command and Control",
+    "description": "Anomalous communication bursts across non-standard application protocols indicating lateral movement or unauthorized internal scanning.",
+    "mitigation": "Quarantine the internal subnet, inspect active session state tables, and terminate persistent TCP connections.",
+    "default_action": "QUARANTINE"
+  }
+]

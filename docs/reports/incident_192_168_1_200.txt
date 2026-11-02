@@ -1,0 +1,26 @@
+
+================================================================================
+[AUTOMATED INCIDENT PLAYBOOK - SECU-RAG SOC TELEMETRY]
+Timestamp: 2026-11-02 15:09:40 UTC
+Threat Target: Edge Ingress Gateway
+================================================================================
+
+[1. TELEMETRY DETAILS]
+  - Malicious Source IP     : 192.168.1.200
+  - Flagged Threat Signature: Denial of Service: Volumetric Flood
+  - Anomaly Score           : -0.3065 (Isolation Forest Metric)
+  - Packet Arrival Rate     : 1002.00 pkts/sec
+  - Unique Ports Scanned    : 1
+
+[2. RETRIEVED THREAT INTEL (MITRE ATT&CK)]
+  - Technique ID            : T1498 (Network Denial of Service (Volumetric Flood))
+  - Tactic Category         : Impact
+  - Vector Description      : Adversaries direct high-volume traffic floods (SYN/UDP floods) towards internal hosts to degrade network availability and exhaust socket memory buffers.
+  - Industry Best-Practice  : Enable SYN cookies, activate edge scrubbing center redirect, and enforce per-IP packet rate limits at the router gateway.
+
+[3. AUTONOMOUS REMEDIATION ACTION]
+  - Enforced Policy         : RATE_LIMIT_DROP
+  - Executable Shell Command:
+      >>> sudo iptables -A INPUT -s 192.168.1.200 -j DROP
+  - Action Status           : READY_FOR_SOC_DEPLOYMENT
+================================================================================

@@ -1,0 +1,5 @@
+src_ip,packet_count,total_bytes,avg_packet_size,unique_dest_ports,unique_dest_ips,duration,packet_rate,byte_rate,prediction,anomaly_score,threat_signature
+192.168.1.44,79,60809,769.734,5,3,171.029,0.461909,355.547,-1,-0.027295407628965096,Suspicious Host Deviation
+192.168.1.40,120,103370,861.417,5,3,187.168,0.641135,552.284,-1,-0.007636577584485105,Suspicious Host Deviation
+192.168.1.200,500,20000,40.0,1,1,0.499,1002.0,40080.2,-1,-0.3065479468893113,Denial of Service: Volumetric Flood
+192.168.1.99,100,6400,64.0,100,1,0.495,202.02,12929.3,-1,-0.2781346774908984,Reconnaissance: Port Scan Sweep
